@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Your Trip</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <style>
+        body {
+            background: #f7f8fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .form-check-label {
+            font-size: 1.1rem;
+        }
+        .card {
+            margin: 10px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .weather-icon {
+            font-size: 50px;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+            border-width: 0.3em;
+        }
+        .card-body {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-center mb-4">Plan Your Trip</h1>
+    <form action="/itinerary" method="POST">
+        <div class="mb-3">
+            <label for="city" class="form-label">City</label>
+            <input type="text" class="form-control" id="city" name="city" placeholder="Enter city name" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Preferences</label><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="museum" name="preferences" value="museum">
+                <label class="form-check-label" for="museum">Museum</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="park" name="preferences" value="park">
+                <label class="form-check-label" for="park">Park</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="shopping" name="preferences" value="shopping mall">
+                <label class="form-check-label" for="shopping">Shopping Mall</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="beach" name="preferences" value="beach">
+                <label class="form-check-label" for="beach">Beach</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="restaurant" name="preferences" value="restaurant">
+                <label class="form-check-label" for="restaurant">Restaurant</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="hillstation" name="preferences" value="hill station">
+                <label class="form-check-label" for="hillstation">Hill Station</label>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg w-100">Generate Itinerary</button>
+    </form>
+</div>
+
+<!-- Loading Spinner -->
+<div class="loading">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+<script>
+    // Show loading spinner during the API call
+    document.querySelector("form").addEventListener("submit", function() {
+        document.querySelector(".loading").style.display = "block";
+    });
+</script>
+</body>
+</html>
